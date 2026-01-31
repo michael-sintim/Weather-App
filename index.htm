@@ -6,10 +6,10 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
+  <script src='scripts.js'> </script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href='style.css' rel='stylesheet'>
-
-<!-- CORRECT ✅ Google Fonts imports -->
+  
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -28,41 +28,52 @@
 
  <img src='../weather-app-main/assets/images/logo.svg'>
 
-<div >
 
-<select name='units' id='units' data-units='units' class='text-white bg-[#1a1f3a]' title = 'Units' >  
-<option  selected disabled > Units</option>
-<optgroup label='Switch to Imperial/Metric'  > </optgroup>
+<div data-dropdown='custom-dropdown' class='relative gap-2 hover:bg-[#252b47] cursor-pointer flex p-2  rounded-lg bg-[#1a1f3a] '>
 
- <optgroup label='Temperature'> 
- <option value='Celsius (°C)'> Celsius (°C) </option>  
- <option value='Fahrenheit (°F)'> Fahrenheit (°F)  </option>  
- </optgroup>
-
-<optgroup label= 'Windspeed'>
- <option value='km/h'> km/h  </option>  
- <option value='mph'> mph </option>  
- </optgroup>
+  <!-- images-->
+<img src='../weather-app-main/assets/images/icon-units.svg' class=''>
+<h3 class='pr-1 text-base'>Units </h3> 
+<img src='../weather-app-main/assets/images/icon-dropdown.svg' class=''>
 
 
- <optgroup label='Precipitation'>
- <option value='Millimeters'> Millimeters(mm) </option>  
- <option value='Inches (in)'> Inches (in) </option>  
- </optgroup>
- 
- </select>
+<ul class='hidden absolute top-full right-0 mt-2 bg-[#1a1f3a] border border-[#2a3050] z-50 py-1 min-w-[200px] rounded-lg shadow-xl '>
+  
+  <p class='text-base px-4 py-2 cursor-default'> Switch to Imperial</p>
+  <p class='text-sm px-4 py-2 text-[#9da2b8] cursor-default font-semibold'> Temperature</p>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Celsius (°C)</li>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Fahrenheit (°F)</li>
+
+<hr class='mx-1 my-1 border-t border-[#9da2b8]'>
+
+  <p class='text-sm px-4 py-2 text-[#9da2b8]  font-semibold cursor-default'> Wind Speed</p>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> km/h</li>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> mph</li>
+   
+<hr class='mx-1 my-1 border-t border-[#9da2b8]'>
+
+<p class='text-sm px-4 py-2 text-[#9da2b8] font-semibold cursor-default'>Precipitation </p>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Millimeters (mm)</li>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Inches (in)</li>
+  
+
+  
+
+</ul>
 </div>
+
+
 </div>
 
 <div class='text-center text-5xl p-3 mb-4 '>
 <h1 class='text-white mb-12'>How's the Sky looking today?</h1>
 
 <div class='text-base my-7 '>
-<form >
+<form class=''>
 <input type='text' placeholder='Search for a place...' 
-class='w-50 p-2 mr-3 mt-3 rounded-lg outline-none border-2 bg-[#1a1f3a] text-white placeholder:text-[#666b82] border-gray-300 focus:ring-slate-500 dark:border-gray-600 dark:placeholder:text-[#666b82] dark:text-white w-99'
+class='w-50 p-2 mr-3 mt-1 -ml-1 rounded-lg outline-none border-2 bg-[#1a1f3a] text-white placeholder:text-[#666b82] border-gray-300 focus:ring-slate-500 dark:border-gray-600 dark:placeholder:text-[#666b82] dark:text-white w-123'
   spellCheck='false' autocomplete='false' >
-<button type='submit'class='bg-[#4d5fd9] hover:bg-[#5d6fe9] rounded-lg p-2 cursor-pointer'>Search</button>
+<button type='submit'class='bg-[#4d5fd9] hover:bg-[#5d6fe9] rounded-lg p-2 w-23 h-11 cursor-pointer'>Search</button>
 </form>
 </div>
 </div>
@@ -91,7 +102,7 @@ class='w-50 p-2 mr-3 mt-3 rounded-lg outline-none border-2 bg-[#1a1f3a] text-whi
   Search
 
 
-<div>
+<div class=''>
   Feels like
   <!-- Insert temperature here -->
 
