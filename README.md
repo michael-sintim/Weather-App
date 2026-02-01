@@ -28,6 +28,16 @@ Your users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
+Add geolocation detection to automatically show weather for the user's current location on first visit
+Implement a favorites/saved locations system where users can bookmark frequently checked locations
+Implement a "Compare Locations" feature to view weather side-by-side for multiple locations
+Include UV index, visibility, and air pressure data (available via Open-Meteo)
+Add sunrise/sunset times with visual indicators
+Add animated weather backgrounds that change based on current conditions
+Implement voice search functionality
+Create dark/light mode themes that adapt to the time of day
+Add progressive web app (PWA) capabilities for mobile installation
+
 ## Getting started
 
 ### What's included
@@ -35,6 +45,7 @@ Your users should be able to:
 Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
 
 **In your download:**
+
 - Mobile and desktop designs (JPG format)
 - All required assets in the `/assets` folder
 - Variable and static font files (or link to Google Fonts)

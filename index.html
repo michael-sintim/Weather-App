@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <script src='scripts.js'> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href='style.css' rel='stylesheet'>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Weather app</title>
+
+</head>
+<body class='bg-[#0a0e27] text-lg text-white' >
+
+<div class='flex  justify-between p-6 mb-2 '> 
+
+ <img src='../weather-app-main/assets/images/logo.svg'>
+
+
+<div data-dropdown='custom-dropdown' class='relative gap-2 mr-12 hover:bg-[#252b47] cursor-pointer flex p-2  rounded-lg bg-[#1a1f3a] '>
+
+  <!-- images-->
+<img src='../weather-app-main/assets/images/icon-units.svg' >
+<h3 class='pr-1 text-base'>Units </h3> 
+<img src='../weather-app-main/assets/images/icon-dropdown.svg' >
+
+
+<ul class='hidden absolute top-full right-0 mt-2 bg-[#1a1f3a] border border-[#2a3050] z-50 py-1 min-w-[200px] rounded-lg shadow-xl '>
+  
+  <p class='text-base px-4 py-2 cursor-default'> Switch to Imperial</p>
+  <p class='text-sm px-4 py-2 text-[#9da2b8] cursor-default font-semibold'> Temperature</p>
+
+
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Celsius (°C)</li>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Fahrenheit (°F)</li>
+
+<hr class='mx-1 my-1 border-t border-[#9da2b8]'>
+
+  <p class='text-sm px-4 py-2 text-[#9da2b8]  font-semibold cursor-default'> Wind Speed</p>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> km/h</li>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> mph</li>
+   
+<hr class='mx-1 my-1 border-t border-[#9da2b8]'>
+
+<p class='text-sm px-4 py-2 text-[#9da2b8] font-semibold cursor-default'>Precipitation </p>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Millimeters (mm)</li>
+    <li class='text-base px-4 py-2 hover:bg-[#252b47]'> Inches (in)</li>
+  
+</ul>
+</div>
+
+
+</div>
+
+<div class='text-center text-5xl p-3 mb-4 '>
+<h1 class='text-white mb-12'>How's the Sky looking today?</h1>
+
+<div class='text-base my-7 '>
+
+<form class='flex justify-center mr-8'>
+<input type='text' placeholder='Search for a place...' 
+class=' p-2 mr-3  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white placeholder:text-[#666b82] focus:border-white border-gray-300 focus:ring-slate-500 dark:border-gray-600 dark:placeholder:text-[#666b82] dark:text-white w-104'
+  spellCheck='false' autocomplete='false' >
+<button type='submit'class='bg-[#4d5fd9] hover:bg-[#5d6fe9] rounded-lg p-2 w-24 h-11 cursor-pointer'>Search</button>
+</form>
+</div>
+</div>
+
+<div class="max-w-[1000px] pl-24 ">
+    
+<div class='flex justify-between bg-[url(../weather-app-main/assets/images/bg-today-large.svg)] bg-no-repeat  items-center    my-16 
+rounded-3xl w-full min-w-[300px]  h-[300px] bg-cover '>
+
+  <div class='p-8' >
+   <p class="text-3xl">Berlin, Germany </p>  
+   <p class="text-sm text-[#9da2b8]">Tuesday, August 5, 2025 </p>  
+  
+
+  </div>
+  
+  <div class='flex items-center p-12 '>
+    <img src='../weather-app-main/assets/images/icon-sunny.webp' class='object-scale-down max-w-20
+     mx-4'>
+   <p class='text-8xl font-semibold' id='degr'>20&deg;</p>  
+  </div>
+
+</div>
+
+
+
+<div class='grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  gap-8  mt-10 w-full   ' data-card='weather-card-parent'>
+
+<div class='bg-[#1a1f3a] rounded-xl  text-left p-6 'data-card='weather-card' > 
+  <h3 class='text-[#9da2b8] mb-3 text-sm'> Feels like</h3> 
+  <p class='text-4xl font-bold'> 18&deg;</p>
+
+</div>
+<div class='bg-[#1a1f3a] rounded-xl  text-left p-6 ' data-card='weather-card'> 
+  <h3 class='text-[#9da2b8] mb-3 text-sm'> Humidity</h3> 
+  <p class='text-4xl font-bold'> 46%</p>
+
+</div>
+<div class='bg-[#1a1f3a] rounded-xl  text-left p-6 ' data-card='weather-card'> 
+  <h3 class='text-[#9da2b8] mb-3 text-sm'> Wind</h3> 
+  <p class='text-4xl font-bold'> 14 km/h</p>
+
+</div>
+<div class='bg-[#1a1f3a] rounded-xl  text-left p-6 ' data-card='weather-card'> 
+  <h3 class='text-[#9da2b8] mb-3 text-sm'> Precipitation</h3> 
+  <p class='text-4xl font-bold'> 0 mm</p>
+
+</div>
+
+
+<!-- 9da2b8  chevron colorr-->
+
+</div>
+
+<!-- outer container -->
+<div class="flex gap-6">
+
+<!-- left side -->
+<div class="flex-1"> 
+<p class=" text-lg mt-16 mb-5"> Daily Forecast </p>
+<div class='grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2 w-full min-w-[300px]   mt-4'> 
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  
+  <div class='  bg-[#1a1f3a] rounded-xl p-2 '> 
+    <h3 class='text-center'>Tue </h3>
+    <img src='../weather-app-main/assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2'>
+    <div class='flex justify-between mx-2 '> 
+    <p> 20&deg;</p> 
+    <p class='text-[#9da2b8]'> 14&deg;</p> 
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- right side  -->
+<div class="lg:w-80 xl:w-90 bg-[#1a1f3a] rounded-lg px-4">
+  <!-- Header row -->
+      <div class='bg-[#1a1f3a] rounded-xl p-4 sticky top-6 max-h-[calc(100vh-100px)] overflow-y-auto'>
+
+  <div class="flex justify-between items-center mb-4 p-2  ">
+    <h3 class="text-base  font-semibold">Hourly Forecast</h3>
+
+    <div class="relative">
+      <div class="flex bg-[#252b47] hover:bg-[#2e3550] items-center px-3 cursor-pointer rounded-lg py-1" data-hourly-dropdown>
+        <span class="text-base mr-2"> Tuesday</span>
+          <img src='../weather-app-main/assets/images/icon-dropdown.svg' class='w-3 h-3'>
+      </div>
+
+        <!-- Dropdown Menu -->
+        <ul class='hidden absolute top-full right-0 mt-1 min-w-[160px] bg-[#1a1f3a] border border-[#2a3050] shadow-lg rounded-lg z-50' data-hourly-menu>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Monday</li>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Tuesday</li>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Wednesday</li>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Thursday</li>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Friday</li>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Saturday</li>
+          <li class='px-3 py-1 text-sm cursor-pointer hover:bg-[#252b47]'>Sunday</li>
+        </ul>
+
+      </div>
+    </div>
+<!-- hourly coloumns -->
+    <div class="">
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+    
+      <div class="flex justify-between px-2 py-1 my-4 rounded-lg bg-[#252b47]">
+       <span class="flex rounded-lg bg-[#252b47] py-1">
+          <img src='../weather-app-main/assets/images/icon-rain.webp' class='object-scale-down w-9 h-9 my-auto'>
+          <p class="my-auto text-xl">3 PM</p></span>
+
+          <p class="my-auto text-base flex justify-end mr-2">34&deg;</p>
+        
+
+      </div>
+
+    </div>
+      </div> <!--   ending div  -->
+
+
+
+    </div>
+
+  </div>
+
+</div>    
+
+  </div>
+  
+    
+</div>
+</div>
+</div>
+
+<div> 
+
+</div>
+  </div>
+
+</div>
+
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
