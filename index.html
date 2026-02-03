@@ -14,7 +14,7 @@
 </head>
 <body class='bg-[#0a0e27] text-white'>
 
-  <!-- Header -->
+  <!-- Header --> 
   <div class='flex justify-between p-6 mb-2'>
     <img src='./assets/images/logo.svg' alt='Weather App Logo'>
     <div data-dropdown='custom-dropdown' class='relative gap-2 mr-12 hover:bg-[#252b47] cursor-pointer flex p-2 rounded-lg bg-[#1a1f3a]'>
@@ -190,7 +190,7 @@ class=' p-2 mr-3  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
         <!-- Hourly Items -->
         <div class='space-y-3 max-h-[600px]  pr-2'>
           <!-- Hour 1 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center cursor-pointer px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
               <span class='text-lg'>3 PM</span>
@@ -264,96 +264,5 @@ class=' p-2 mr-3  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
     Coded by <a href='#' class='text-[#4d5fd9] hover:underline'>Your Name Here</a>.
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Get the dropdown trigger and menu elements
-      const dropdownTrigger = document.querySelector('[data-dropdown="custom-dropdown"]');
-      const dropdownMenu = dropdownTrigger.querySelector('ul');
-      const dropdownItems = dropdownMenu.querySelectorAll('li');
-      
-      // Function to show the dropdown
-      function showDropdown() {
-        dropdownMenu.classList.remove('hidden');
-        dropdownMenu.classList.add('show');
-        
-        // Add staggered delay to list items
-        dropdownItems.forEach((item, index) => {
-          item.style.transitionDelay = `${index * 100}ms`;
-        });
-      }
-      
-      // Function to hide the dropdown
-      function hideDropdown() {
-        dropdownMenu.classList.add('hidden');
-        dropdownMenu.classList.remove('show');
-        
-        // Reset transition delays
-        dropdownItems.forEach(item => {
-          item.style.transitionDelay = '0ms';
-        });
-      }
-      
-      // Function to toggle the dropdown
-      function toggleDropdown() {
-        if (dropdownMenu.classList.contains('hidden')) {
-          showDropdown();
-        } else {
-          hideDropdown();
-        }
-      }
-      
-      // Toggle dropdown when clicking the trigger
-      dropdownTrigger.addEventListener('click', function(event) {
-        event.stopPropagation();
-        toggleDropdown();
-      });
-      
-      // Handle item clicks
-      dropdownItems.forEach(item => {
-        item.addEventListener('click', function(event) {
-          event.stopPropagation();
-          
-          // Remove active class from all items in this section
-          const section = this.closest('ul') || this.parentElement;
-          const allItemsInSection = section.querySelectorAll('li');
-          allItemsInSection.forEach(el => el.classList.remove('active'));
-          
-          // Add active class to clicked item
-          this.classList.add('active');
-          
-          // Update the header text
-          const headerP = dropdownMenu.querySelector('p:first-child');
-          const activeItems = dropdownMenu.querySelectorAll('li.active');
-          
-          // Check if we have any imperial units selected
-          const hasImperial = Array.from(activeItems).some(item => 
-            item.textContent.includes('Fahrenheit') || 
-            item.textContent.includes('mph') || 
-            item.textContent.includes('Inches')
-          );
-          
-          headerP.textContent = hasImperial ? 'Switch to Metric' : 'Switch to Imperial';
-          
-          // Close dropdown after selection
-          hideDropdown();
-        });
-      });
-      
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(event) {
-        if (!dropdownTrigger.contains(event.target) && !dropdownMenu.classList.contains('hidden')) {
-          hideDropdown();
-        }
-      });
-      
-      // Close dropdown when pressing Escape key
-      document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) {
-          hideDropdown();
-        }
-      });
-    });
-  </script>
 </body>
 </html>
