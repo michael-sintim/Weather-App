@@ -14,3 +14,11 @@
     // Close dropdown when clicking outside
     // Close dropdown when pressing Escape key
 
+
+const dropdown = document.querySelector("data-dropdown='custom-dropdown'")
+
+
+dropdown.addEventListener('click', () =>
+    dropdown.classList.add('hidden'),
+    dropdown.classList.remove('hidden')
+)
