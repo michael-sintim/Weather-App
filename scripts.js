@@ -14,11 +14,41 @@
     // Close dropdown when clicking outside
     // Close dropdown when pressing Escape key
 
+const DropdownTrigger = document.querySelector("[data-dropdown='custom-dropdown']")
+const dropdown = document.querySelector("[data-ul='Dropdown-ul']")
+const list_items = document.querySelectorAll("[data-ul='Dropdown-ul'] li")
 
-const dropdown = document.querySelector("data-dropdown='custom-dropdown'")
+// show drop down 
+const Showdropdown = () =>{
+    dropdown.classList.remove('hidden');
+}
+
+// hide dropdown 
+const HideDropdown = () => {
+    dropdown.classList.add('hidden');
+}
+
+list_items.forEach((item,index) => {
+    item.style.transitionDelay = `${index *0.05}s`
+});
 
 
-dropdown.addEventListener('click', () =>
-    dropdown.classList.add('hidden'),
-    dropdown.classList.remove('hidden')
+const reset_delay = function (){list_items.forEach((item) =>{
+item.style.transitionDelay = `${0}s`
+}
 )
+}
+
+
+const toogle_dropdown = () => {
+    if (dropdown.classList.contains('hidden')){
+        Showdropdown()
+    }else {
+        HideDropdown()
+        reset_delay()
+    }
+}
+
+DropdownTrigger.addEventListener('click',toogle_dropdown);
+
+
