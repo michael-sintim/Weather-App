@@ -5,12 +5,14 @@
     // Reset transition delays
     // Function to toggle the dropdown
     // Toggle dropdown when clicking the trigger
+
     // Handle item clicks
     // Remove active class from all items in this section
     // Add active class to clicked item            
     // Update the header text
     // Check if we have any imperial units selected
     // Close dropdown after selection
+
     // Close dropdown when clicking outside
     // Close dropdown when pressing Escape key
 
@@ -52,3 +54,26 @@ const toogle_dropdown = () => {
 DropdownTrigger.addEventListener('click',toogle_dropdown);
 
 
+const outside_close_with_keyboard = (e) => {
+    if (e.key==="Escape" && !dropdown.classList.contains('hidden')){
+        HideDropdown();
+    }
+}
+
+
+document.addEventListener('keydown',outside_close_with_keyboard)
+
+
+const click_outside_to_close = (e) => {
+        if (!DropdownTrigger.contains(e.target)){
+            HideDropdown()
+        }
+}
+
+document.addEventListener('click',click_outside_to_close)
+
+const CLOSEdROPdOWNaFTERSELECTION = (e) => {
+    for(let i=0; i < dropdown.length ;i++){
+        if ()
+    }
+}
