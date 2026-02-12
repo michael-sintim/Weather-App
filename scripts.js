@@ -5,6 +5,9 @@
     // Reset transition delays
     // Function to toggle the dropdown
     // Toggle dropdown when clicking the trigger
+    
+    // Close dropdown when clicking outside
+    // Close dropdown when pressing Escape key
 
     // Handle item clicks
     // Remove active class from all items in this section
@@ -13,8 +16,6 @@
     // Check if we have any imperial units selected
     // Close dropdown after selection
 
-    // Close dropdown when clicking outside
-    // Close dropdown when pressing Escape key
 
 const DropdownTrigger = document.querySelector("[data-dropdown='custom-dropdown']")
 const dropdown = document.querySelector("[data-ul='Dropdown-ul']")
@@ -73,7 +74,14 @@ const click_outside_to_close = (e) => {
 document.addEventListener('click',click_outside_to_close)
 
 const CLOSEdROPdOWNaFTERSELECTION = (e) => {
-    for(let i=0; i < dropdown.length ;i++){
-        if ()
-    }
+        // Remove active class from all items
+    list_items.forEach(item => item.classList.remove('active'));
+
+         // Add active class to clicked item
+    e.target.classList.add('active');
+
+    HideDropdown();
+    reset_delay();
+
+
 }
