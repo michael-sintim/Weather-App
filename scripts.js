@@ -85,3 +85,26 @@ const CLOSEdROPdOWNaFTERSELECTION = (e) => {
 
 
 }
+
+async function FetchWeatherData() {
+    const response = await fetch
+    ('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m&current=temperature_2m,relative_humidity_2m,rain,precipitation');
+    
+    const data = await response.json() //convert message to json
+    console.log(data)
+
+    
+
+    const currentTemp = Math.round(data.current.temperature_2m)+'°'
+    document.querySelector('[data-currentWeather="weather"]').textContent = currentTemp
+    return data;
+    
+}
+
+const seachForm = document.querySelector('form');
+
+seachForm.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const cityName = document.querySelector('[data-form="form"]').value;
+    await FetchWeatherData
+})
