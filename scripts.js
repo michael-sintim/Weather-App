@@ -86,10 +86,42 @@ const CLOSEdROPdOWNaFTERSELECTION = (e) => {
 
 }
 
-async function FetchWeatherData() {
-    const response = await fetch
-    ('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m&current=temperature_2m,relative_humidity_2m,rain,precipitation');
+list_items.forEach(item =>{
+    item.addEventListener('click',CLOSEdROPdOWNaFTERSELECTION)
+})
+
+
+
+//geocoding api 
+
+async function GeocodingData(cityName){
+    try{
+    const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en&format=json`)
+    const data = await response.json();
+    if (!data.results || data.results.length===0){
+        alert('City not found')
+        return null
+    }
+    return {
+        long:data.results[0].longitude,
+        lat:data.results[0].latitude,
+        city:data.results[0].name,
+        country:data.results[0].country,
+        
+    }
+}
+
+catch (error){
+    console.log(`Geocoding error: ${error}`)
+    throw error
+    }
     
+}
+
+
+//weather api 
+async function FetchWeatherData(lat,long) {
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m&current=temperature_2m,relative_humidity_2m,rain,precipitation`)
     const data = await response.json() //convert message to json
     console.log(data)
 
@@ -101,10 +133,18 @@ async function FetchWeatherData() {
     
 }
 
-const seachForm = document.querySelector('form');
+const searchForm = document.querySelector('form');
 
-seachForm.addEventListener('click', async (e) => {
+searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const cityName = document.querySelector('[data-form="form"]').value;
-    await FetchWeatherData
+    
+const cityName = document.querySelector('[data-form="form"]').value;
+    const location = await GeocodingData(cityName)
+
+
+    if (!location) return
+    
+    await FetchWeatherData(
+        location.lat,location.long
+    )
 })
