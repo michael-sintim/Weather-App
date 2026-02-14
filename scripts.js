@@ -185,6 +185,13 @@ async function FetchWeatherData(lat,long) {
     document.querySelector('[data-maxTemp1="max"]').textContent = `${Math.round(data.daily.temperature_2m_max[0])}`
     document.querySelector('[data-minTemp1="min"]').textContent = `${Math.round(data.daily.temperature_2m_min)}`
 
+    //
+    for(let i=0;i <7;i++){
+        
+        const WeatherCode = data.daily.weather_code[i]
+        const img = document.querySelector('[data-bgimg="img"]')
+        img.src = weatherCodes[WeatherCode]
+    }
     // HOURY
     document.querySelector('[data-hr1="h1"]').textContent = `${Math.round(data.hourly.temperature_2m_min)}`
 
@@ -196,8 +203,8 @@ async function FetchWeatherData(lat,long) {
         const cards = dailyCards[i]
 
         const WeatherCode = data.daily.weather_code[i]
-        const MaxTemp= data.daily.temperature_2m_max[i]
-        const MinTemp = data.daily.temperature_2m_min[i]
+        const MaxTemp=  Math.round(data.daily.temperature_2m_max[i])
+        const MinTemp = Math.round(data.daily.temperature_2m_min[i])
       
         const icon_path = weatherCodes[WeatherCode]
         console.log(icon_path)
@@ -214,7 +221,7 @@ async function FetchWeatherData(lat,long) {
         img.src =  icon_path
     }
 
-    console.log(data.current.temperature_2m_max)
+    
     return data;
     
 }
