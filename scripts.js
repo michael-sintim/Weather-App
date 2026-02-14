@@ -188,11 +188,31 @@ async function FetchWeatherData(lat,long) {
     // HOURY
     document.querySelector('[data-hr1="h1"]').textContent = `${Math.round(data.hourly.temperature_2m_min)}`
 
+    for(let i=0; i<7;i++){
+        
+        const DayDate = data.daily.time[i]
+        documen
+
+        const WeatherCode = data.daily.weather_code[i]
+        const MaxTemp= data.daily.temperature_2m_max[i]
+        const MinTemp = data.daily.temperature_2m_min[i]
+        
+        const DDate = new Date(DayDate)
+        let a = {weekday:'short'}
+        const dateConversion = new Intl.DateTimeFormat('en-US',options).format(DDate)
+
+
+    }
 
     console.log(data.current.temperature_2m_max)
     return data;
     
 }
+
+
+let dateee = new Date()
+let options = {weekday: 'long',} // other parameeters day: 'numeric'
+console.log(new Intl.DateTimeFormat('en-GB',options).format(dateee))
 
 const searchForm = document.querySelector('form');
 
