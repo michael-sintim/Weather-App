@@ -17,10 +17,12 @@
   <!-- Header --> 
   <div class='flex justify-between p-6 mb-2'>
     <img src='./assets/images/logo.svg' alt='Weather App Logo'>
-    <div data-dropdown='custom-dropdown' class='relative gap-2 mr-12 hover:bg-[#252b47] cursor-pointer flex p-2 rounded-lg bg-[#1a1f3a]'>
-      <img src='./assets/images/icon-units.svg' alt='Units icon'>
+    <div data-dropdown='custom-dropdown' class='relative gap-2 mr-12 hover:bg-[#252b47] cursor-pointer flex p-2 items-center rounded-lg bg-[#1a1f3a]'>
+
+      <img src='./assets/images/icon-units.svg' alt='Units icon' class="object-scale-down">
       <h3 class='pr-1 text-base'>Units</h3>
-      <img src='./assets/images/icon-dropdown.svg' alt='Dropdown icon'>
+      <img src='./assets/images/icon-dropdown.svg' alt='Dropdown icon' class="object-scale-down ">
+
       <ul  data-ul="Dropdown-ul" class='hidden absolute top-full right-0 mt-2 bg-[#1a1f3a] border border-[#2a3050] z-50 py-1 min-w-[200px] rounded-lg shadow-xl'>
         <p class='text-base px-4 py-2 cursor-default'>Switch to Imperial</p>
         <p class='text-sm px-4 py-2 text-[#9da2b8] cursor-default font-semibold'>Temperature</p>
@@ -63,8 +65,8 @@ class=' p-2 mr-4  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
       <!-- Current Weather Card -->
       <div class='flex justify-between bg-[url(./assets/images/bg-today-large.svg)] bg-no-repeat items-center my-8 rounded-3xl w-full h-[300px] bg-cover'>
         <div class='p-8'>
-          <p class='text-3xl font-bold'>Berlin, Germany</p>
-          <p class='text-sm text-[#9da2b8]'>Tuesday, August 5, 2025</p>
+          <p class='text-3xl font-bold' data-country="countryDate">Berlin, Germany</p>
+          <p class='text-sm text-[#9da2b8]' data-date="date">Tuesday, August 5, 2025</p>
         </div>
         <div class='flex items-center p-8'>
           <img src='./assets/images/icon-sunny.webp' class='w-24 h-24 mx-4' alt='Sunny weather'>
@@ -74,21 +76,21 @@ class=' p-2 mr-4  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
 
       <!-- Weather Stats Cards -->
       <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8' data-card='weather-card-parent'>
-        <div class='bg-[#1a1f3a] rounded-xl p-6' data-card='weather-card'>
+        <div class='bg-[#1a1f3a] rounded-xl p-6' >
           <h3 class='text-[#9da2b8] mb-3 text-sm'>Feels like</h3>
-          <p class='text-4xl font-bold'>18°</p>
+          <p class='text-4xl font-bold' data-card='weather-card1'>18°</p>
         </div>
-        <div class='bg-[#1a1f3a] rounded-xl p-6' data-card='weather-card'>
-          <h3 class='text-[#9da2b8] mb-3 text-sm'>Humidity</h3>
-          <p class='text-4xl font-bold'>46%</p>
+        <div class='bg-[#1a1f3a] rounded-xl p-6' >
+          <h3 class='text-[#9da2b8] mb-3 text-sm' >Humidity</h3>
+          <p class='text-4xl font-bold' data-card='weather-card2'>46%</p>
         </div>
-        <div class='bg-[#1a1f3a] rounded-xl p-6' data-card='weather-card'>
-          <h3 class='text-[#9da2b8] mb-3 text-sm'>Wind</h3>
-          <p class='text-4xl font-bold'>14 km/h</p>
+        <div class='bg-[#1a1f3a] rounded-xl p-6' >
+          <h3 class='text-[#9da2b8] mb-3 text-sm' >Wind</h3>
+          <p class='text-4xl font-bold' data-card='weather-card3'>14 km/h</p>
         </div>
-        <div class='bg-[#1a1f3a] rounded-xl p-6' data-card='weather-card'>
+        <div class='bg-[#1a1f3a] rounded-xl p-6' >
           <h3 class='text-[#9da2b8] mb-3 text-sm'>Precipitation</h3>
-          <p class='text-4xl font-bold'>0 mm</p>
+          <p class='text-4xl font-bold' data-card='weather-card4'>0 mm</p>
         </div>
       </div>
 
@@ -101,8 +103,8 @@ class=' p-2 mr-4  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
             <h3 class='font-medium mb-2'>Tue</h3>
             <img src='./assets/images/icon-drizzle.webp' class='w-16 h-16 mx-auto my-2' alt='Drizzle'>
             <div class='flex justify-between '>
-              <span class='font-medium'>20°</span>
-              <span class='text-[#9da2b8]'>14°</span>
+              <span class='font-medium' data-maxTemp1="max">20°</span>
+              <span class='text-[#9da2b8]' data-minTemp1="min">14°</span>
             </div>
           </div>
           <!-- Day 2 -->
@@ -195,7 +197,7 @@ class=' p-2 mr-4  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
               <span class='text-lg'>3 PM</span>
             </div>
-            <span class='text-xl font-semibold'>34°</span>
+            <span class='text-xl font-semibold' data-hr1="h1">34°</span>
           </div>
           <!-- Hour 2 -->
           <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>

@@ -90,9 +90,16 @@ list_items.forEach(item =>{
     item.addEventListener('click',CLOSEdROPdOWNaFTERSELECTION)
 })
 
+const date = new Date().toLocaleDateString('en-US',{
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+})
 
-
+document.querySelector('[data-date="date"]').textContent = date
 //geocoding api 
+
 
 async function GeocodingData(cityName){
     try{
@@ -102,7 +109,8 @@ async function GeocodingData(cityName){
         alert('City not found')
         return null
     }
-    return {
+    
+    return { 
         long:data.results[0].longitude,
         lat:data.results[0].latitude,
         city:data.results[0].name,
@@ -116,19 +124,72 @@ catch (error){
     throw error
     }
     
+}   
+
+
+
+//weather codes
+
+const weatherCodes = {
+
+    0: 'assets/images/icon-sunny.webp',    //clear sky
+    1: 'assets/images/icon-sunny.webp',   //Mainly clear
+    2: 'assets/images/icon-partly-cloudy.webp', // partly cloudy
+    3: 'assets/images/icon-overcast.webp' , //overcast
+    45: 'assets/images/icon-fog.webp', // fog
+    48: 'assets/images/icon-fog.webp', // fog
+    53:'assets/images/icon-drizzle.webp', // drizzle 
+    51:'assets/images/icon-drizzle.webp', // drizzle 
+    55:'assets/images/icon-drizzle.webp', // drizzle 
+    61: 'assets/images/icon-rain.webp', //rain
+    63: 'assets/images/icon-rain.webp', //rain
+    65: 'assets/images/icon-rain.webp', //rain
+    66: 'assets/images/icon-rain.webp', //rain
+    67: 'assets/images/icon-rain.webp', //rain
+    71: 'assets/images/icon-snow.webp', // snow
+    73: 'assets/images/icon-snow.webp', // snow
+    75: 'assets/images/icon-snow.webp', // snow
+    77: 'assets/images/icon-snow.webp', // snow
+    80: 'assets/images/icon-rain.webp',
+    81: 'assets/images/icon-rain.webp',
+    82: 'assets/images/icon-rain.webp',
+    85: 'assets/images/icon-snow.webp',
+    86: 'assets/images/icon-snow.webp',
+    95: 'assets/images/icon-storm.webp',
+    96: 'assets/images/icon-storm.webp',
+    99: 'assets/images/icon-storm.webp',
+
+
+
 }
+
 
 
 //weather api 
 async function FetchWeatherData(lat,long) {
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m&current=temperature_2m,relative_humidity_2m,rain,precipitation`)
-    const data = await response.json() //convert message to json
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m`)
+       
+        const data = await response.json() //convert message to json
     console.log(data)
-
     
 
     const currentTemp = Math.round(data.current.temperature_2m)+'°'
     document.querySelector('[data-currentWeather="weather"]').textContent = currentTemp
+
+    document.querySelector("[data-card='weather-card1']").textContent =  `${Math.round(data.current.apparent_temperature)}°`
+    document.querySelector("[data-card='weather-card2']").textContent =  `${Math.round(data.current.relative_humidity_2m)}%`
+    document.querySelector("[data-card='weather-card3']").textContent =  `${Math.round(data.current.wind_speed_10m)} `
+    document.querySelector("[data-card='weather-card4']").textContent =  `${Math.round(data.current.precipitation)}°`
+    console.log(data.daily.precipitation)
+
+    document.querySelector('[data-maxTemp1="max"]').textContent = `${Math.round(data.daily.temperature_2m_max[0])}`
+    document.querySelector('[data-minTemp1="min"]').textContent = `${Math.round(data.daily.temperature_2m_min)}`
+
+    // HOURY
+    document.querySelector('[data-hr1="h1"]').textContent = `${Math.round(data.hourly.temperature_2m_min)}`
+
+
+    console.log(data.current.temperature_2m_max)
     return data;
     
 }
@@ -138,13 +199,16 @@ const searchForm = document.querySelector('form');
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-const cityName = document.querySelector('[data-form="form"]').value;
+    const cityName = document.querySelector('[data-form="form"]').value;
+    const cityname_capitalize =  cityName[0].toUpperCase() + cityName.slice(1).toLowerCase()
     const location = await GeocodingData(cityName)
-
+    
+    document.querySelector('[data-country="countryDate"]').textContent = `${cityname_capitalize}, ${location.country}`
 
     if (!location) return
     
     await FetchWeatherData(
         location.lat,location.long
     )
+
 })
