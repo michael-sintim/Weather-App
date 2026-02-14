@@ -167,7 +167,7 @@ const weatherCodes = {
 
 //weather api 
 async function FetchWeatherData(lat,long) {
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m`)
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m`)
        
         const data = await response.json() //convert message to json
     console.log(data)
@@ -188,20 +188,30 @@ async function FetchWeatherData(lat,long) {
     // HOURY
     document.querySelector('[data-hr1="h1"]').textContent = `${Math.round(data.hourly.temperature_2m_min)}`
 
+    const dailyCards = document.querySelectorAll('[data-allCards="cards"] > div')
+
     for(let i=0; i<7;i++){
         
         const DayDate = data.daily.time[i]
-        documen
+        const cards = dailyCards[i]
 
         const WeatherCode = data.daily.weather_code[i]
         const MaxTemp= data.daily.temperature_2m_max[i]
         const MinTemp = data.daily.temperature_2m_min[i]
-        
+      
+        const icon_path = weatherCodes[WeatherCode]
+        console.log(icon_path)
         const DDate = new Date(DayDate)
         let a = {weekday:'short'}
-        const dateConversion = new Intl.DateTimeFormat('en-US',options).format(DDate)
+        const dateConversion = new Intl.DateTimeFormat('en-US',a).format(DDate)
 
+        
+        document.querySelector(`[data-allCards="card${i}"]`).textContent = dateConversion // for all h3 elements
+        document.querySelector(`[data-maxTemp${i}="max"]`).textContent = MaxTemp + '°'//max
+        document.querySelector(`[data-minTemp${i}="min"]`).textContent = MinTemp + '°'//min
 
+        const img = cards.querySelector('img')
+        img.src =  icon_path
     }
 
     console.log(data.current.temperature_2m_max)
