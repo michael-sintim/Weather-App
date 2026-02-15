@@ -16,7 +16,8 @@
     // Check if we have any imperial units selected
     // Close dropdown after selection
 
-
+document.addEventListener('DOMContentLoaded' ,()=> {
+    
 const DropdownTrigger = document.querySelector("[data-dropdown='custom-dropdown']")
 const dropdown = document.querySelector("[data-ul='Dropdown-ul']")
 const list_items = document.querySelectorAll("[data-ul='Dropdown-ul'] li")
@@ -51,6 +52,7 @@ const toogle_dropdown = () => {
         reset_delay()
     }
 }
+
 
 DropdownTrigger.addEventListener('click',toogle_dropdown);
 
@@ -98,6 +100,21 @@ const date = new Date().toLocaleDateString('en-US',{
 })
 
 document.querySelector('[data-date="date"]').textContent = date
+
+
+const Dropdown2= document.querySelector('[data-hourly="menu"]')
+const d2trigger = document.querySelector("[data-hourly='dropdown']")
+
+d2trigger.addEventListener('click', () => {
+    if(Dropdown2.classList.contains('hidden')){
+        Dropdown2.classList.remove('hidden')
+    }else{
+        Dropdown2.classList.add('hidden')
+    }
+}
+)
+
+
 //geocoding api 
 
 
@@ -167,7 +184,7 @@ const weatherCodes = {
 
 //weather api 
 async function FetchWeatherData(lat,long) {
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m`)
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m,weather_code`)
        
         const data = await response.json() //convert message to json
     console.log(data)
@@ -193,9 +210,10 @@ async function FetchWeatherData(lat,long) {
         img.src = weatherCodes[WeatherCode]
     }
     // HOURY
-    document.querySelector('[data-hr1="h1"]').textContent = `${Math.round(data.hourly.temperature_2m_min)}`
+    
 
     const dailyCards = document.querySelectorAll('[data-allCards="cards"] > div')
+    
 
     for(let i=0; i<7;i++){
         
@@ -213,15 +231,32 @@ async function FetchWeatherData(lat,long) {
         const dateConversion = new Intl.DateTimeFormat('en-US',a).format(DDate)
 
         
-        document.querySelector(`[data-allCards="card${i}"]`).textContent = dateConversion // for all h3 elements
-        document.querySelector(`[data-maxTemp${i}="max"]`).textContent = MaxTemp + '°'//max
-        document.querySelector(`[data-minTemp${i}="min"]`).textContent = MinTemp + '°'//min
+        document.querySelector(`[data-allCards="card${i}"]`).textContent = dateConversion; // for all h3 elements
+        document.querySelector(`[data-maxTemp${i}="max"]`).textContent = MaxTemp + '°';//max
+        document.querySelector(`[data-minTemp${i}="min"]`).textContent = MinTemp + '°';//min
+        const img = cards.querySelector('img');
+        img.src =  icon_path;
 
-        const img = cards.querySelector('img')
-        img.src =  icon_path
     }
 
-    
+    const HOURLY_CARDS = document.querySelectorAll('[data-ALLCARDS="CARDS"]')
+    const currentHr = new Date().getHours() 
+    for(let i=0;i<8;i++){
+        const time_temp = data.hourly.time[i]
+        const x = new Date(time_temp).getHours()
+        const hr_temp = data.hourly.temperature_2m[i]
+        const WeatherCodes = data.hourly.weather_code[i]
+        const iteratedHuourlycards =  HOURLY_CARDS[i]
+        const hr_time = data.hourly.time[i]
+        const imge = iteratedHuourlycards.querySelector('img')
+        const icon = weatherCodes[WeatherCodes]
+        imge.src = icon
+
+        document.querySelector(`[data-hrtime${i}="h0"]`).textContent = x
+        document.querySelector(`[data-hr0${i}="h0"]`).textContent = hr_temp
+
+    }
+    console.log(time_temp)
     return data;
     
 }
@@ -247,5 +282,8 @@ searchForm.addEventListener('submit', async (e) => {
     await FetchWeatherData(
         location.lat,location.long
     )
+
+})
+
 
 })

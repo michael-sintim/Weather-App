@@ -171,13 +171,13 @@ class=' p-2 mr-4  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
         <!-- Header -->
         <div class='flex justify-between items-center mt-2 mb-7 '>
           <h3 class='text-lg font-semibold'>Hourly Forecast</h3>
-          <div class='relative'>
-            <div class='flex bg-[#252b47] hover:bg-[#2e3550] items-center px-3 cursor-pointer rounded-lg py-2' data-hourly-dropdown>
+          <div class='relative' >
+            <div class='flex bg-[#252b47] hover:bg-[#2e3550] items-center px-3 cursor-pointer rounded-lg py-2' data-hourly='dropdown' >
               <span class='text-base mr-2'>Tuesday</span>
               <img src='./assets/images/icon-dropdown.svg' class='w-3 h-3' alt='Dropdown'>
             </div>
             <!-- Dropdown Menu -->
-            <ul class=' absolute top-full right-0 mt-1 min-w-[160px] bg-[#1a1f3a] border border-[#2a3050] shadow-lg rounded-lg z-50' data-hourly-menu>
+            <ul class='hidden absolute top-full right-0 mt-1 min-w-[160px] bg-[#1a1f3a] border border-[#2a3050] shadow-lg rounded-lg z-50' data-hourly='menu'>
               <li class='px-3 py-2 text-sm cursor-pointer hover:bg-[#252b47]'>Monday</li>
               <li class='px-3 py-2 text-sm cursor-pointer hover:bg-[#252b47]'>Tuesday</li>
               <li class='px-3 py-2 text-sm cursor-pointer hover:bg-[#252b47]'>Wednesday</li>
@@ -192,68 +192,68 @@ class=' p-2 mr-4  rounded-lg outline-none border-2 bg-[#1a1f3a] text-white place
         <!-- Hourly Items -->
         <div class='space-y-3 max-h-[600px]  pr-2'>
           <!-- Hour 1 -->
-          <div class='flex justify-between items-center cursor-pointer px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center cursor-pointer px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>3 PM</span>
+              <span class='text-lg' data-hrtime0="h0">3 PM</span>
             </div>
-            <span class='text-xl font-semibold' data-hr1="h1">34°</span>
+            <span class='text-xl font-semibold' data-hr0="h0">34°</span>
           </div>
           <!-- Hour 2 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>4 PM</span>
+              <span class='text-lg' data-hrtime1="h0">4 PM</span>
             </div>
-            <span class='text-xl font-semibold'>32°</span>
+            <span class='text-xl font-semibold' data-hr1="h0">32°</span>
           </div>
           <!-- Hour 3 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>5 PM</span>
+              <span class='text-lg' data-hrtime2="h0">5 PM</span>
             </div>
-            <span class='text-xl font-semibold'>30°</span>
+            <span class='text-xl font-semibold' data-hr2="h0">30°</span>
           </div>
           <!-- Hour 4 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>6 PM</span>
+              <span class='text-lg' data-hrtime3="h0">6 PM</span>
             </div>
-            <span class='text-xl font-semibold'>28°</span>
+            <span class='text-xl font-semibold' data-hr3="h0">28°</span>
           </div>
           <!-- Hour 5 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>7 PM</span>
+              <span class='text-lg' data-hrtime4="h0">7 PM</span>
             </div>
-            <span class='text-xl font-semibold'>26°</span>
+            <span class='text-xl font-semibold' data-hr4="h0">26°</span>
           </div>
           <!-- Hour 6 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>8 PM</span>
+              <span class='text-lg' data-hrtime5="h0">8 PM</span>
             </div>
-            <span class='text-xl font-semibold'>24°</span>
+            <span class='text-xl font-semibold' data-hr5="h0">24°</span>
           </div>
           <!-- Hour 7 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>9 PM</span>
+              <span class='text-lg' data-hrtime6="h0">9 PM</span>
             </div>
-            <span class='text-xl font-semibold'>22°</span>
+            <span class='text-xl font-semibold' data-hr6="h0">22°</span>
           </div>
           <!-- Hour 8 -->
-          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors'>
+          <div class='flex justify-between items-center px-3 py-3 rounded-lg bg-[#252b47] hover:bg-[#2e3550] transition-colors' data-ALLCARDS="CARDS">
             <div class='flex items-center'>
               <img src='./assets/images/icon-rain.webp' class='w-10 h-10 mr-3' alt='Rain'>
-              <span class='text-lg'>10 PM</span>
+              <span class='text-lg' data-hrtime7="h0">10 PM</span>
             </div>
-            <span class='text-xl font-semibold'>20°</span>
+            <span class='text-xl font-semibold' data-hr7="h0">20°</span>
           </div>
         </div>
       </div>
