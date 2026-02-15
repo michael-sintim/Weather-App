@@ -99,7 +99,7 @@ const date = new Date().toLocaleDateString('en-US',{
     year: 'numeric',
 })
 
-document.querySelector('[data-date="date"]').textContent = date
+document.querySelector('[data-date="date1"]').textContent = date
 
 
 const Dropdown2= document.querySelector('[data-hourly="menu"]')
@@ -181,10 +181,9 @@ const weatherCodes = {
 }
 
 
-
 //weather api 
 async function FetchWeatherData(lat,long) {
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m,weather_code`)
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_180m,precipitation,temperature_80m,apparent_temperature,weather_code&current=temperature_2m,relative_humidity_2m,rain,precipitation,apparent_temperature,wind_speed_10m,weather_code`)
        
         const data = await response.json() //convert message to json
     console.log(data)
@@ -229,42 +228,59 @@ async function FetchWeatherData(lat,long) {
         const DDate = new Date(DayDate)
         let a = {weekday:'short'}
         const dateConversion = new Intl.DateTimeFormat('en-US',a).format(DDate)
-
-        
-        document.querySelector(`[data-allCards="card${i}"]`).textContent = dateConversion; // for all h3 elements
-        document.querySelector(`[data-maxTemp${i}="max"]`).textContent = MaxTemp + '°';//max
-        document.querySelector(`[data-minTemp${i}="min"]`).textContent = MinTemp + '°';//min
         const img = cards.querySelector('img');
         img.src =  icon_path;
+        
+                
+                document.querySelector(`[data-allCards="card${i}"]`).textContent = dateConversion; // for all h3 elements
+                document.querySelector(`[data-maxTemp${i}="max"]`).textContent = MaxTemp + '°';//max
+                document.querySelector(`[data-minTemp${i}="min"]`).textContent = MinTemp + '°';//min
 
     }
 
     const HOURLY_CARDS = document.querySelectorAll('[data-ALLCARDS="CARDS"]')
     const currentHr = new Date().getHours() 
     for(let i=0;i<8;i++){
-        const time_temp = data.hourly.time[i]
-        const x = new Date(time_temp).getHours()
-        const hr_temp = data.hourly.temperature_2m[i]
-        const WeatherCodes = data.hourly.weather_code[i]
+
+        const time_hrly = currentHr + i
+        const time = data.hourly.time[time_hrly]
+
+        const x = new Date(time).toLocaleTimeString('en-US',{
+            hour:'numeric',
+            hour12:true,
+        
+        })    
+        
+
+        const hr_temp = data.hourly.temperature_2m[time_hrly]
+        const WeatherCodes = data.hourly.weather_code[time_hrly]
         const iteratedHuourlycards =  HOURLY_CARDS[i]
-        const hr_time = data.hourly.time[i]
         const imge = iteratedHuourlycards.querySelector('img')
         const icon = weatherCodes[WeatherCodes]
         imge.src = icon
 
         document.querySelector(`[data-hrtime${i}="h0"]`).textContent = x
-        document.querySelector(`[data-hr0${i}="h0"]`).textContent = hr_temp
+        document.querySelector(`[data-hr${i}="h0"]`).textContent = Math.round(hr_temp) + '°'
 
     }
-    console.log(time_temp)
+    
     return data;
     
 }
 
 
+const ww = new Date().toLocaleString('en-US',{
+    weekday:'long'
+})
+document.querySelector('[data-date="date"]').textContent = ww
+console.log(ww)
+
 let dateee = new Date()
-let options = {weekday: 'long',} // other parameeters day: 'numeric'
-console.log(new Intl.DateTimeFormat('en-GB',options).format(dateee))
+let options = {weekday: 'long', month: 'long',
+    day: 'numeric',
+    year: 'numeric',} // other parameeters day: 'numeric'
+const date_bg = new Intl.DateTimeFormat('en-GB',options).format(dateee)
+
 
 const searchForm = document.querySelector('form');
 
