@@ -195,11 +195,11 @@ async function FetchWeatherData(lat,long) {
     document.querySelector("[data-card='weather-card1']").textContent =  `${Math.round(data.current.apparent_temperature)}°`
     document.querySelector("[data-card='weather-card2']").textContent =  `${Math.round(data.current.relative_humidity_2m)}%`
     document.querySelector("[data-card='weather-card3']").textContent =  `${Math.round(data.current.wind_speed_10m)} `
-    document.querySelector("[data-card='weather-card4']").textContent =  `${Math.round(data.current.precipitation)}°`
-    console.log(data.daily.precipitation)
+    document.querySelector("[data-card='weather-card4']").textContent =  `${Math.round(data.current.precipitation)} mm`
+
 
     document.querySelector('[data-maxTemp1="max"]').textContent = `${Math.round(data.daily.temperature_2m_max[0])}`
-    document.querySelector('[data-minTemp1="min"]').textContent = `${Math.round(data.daily.temperature_2m_min)}`
+    document.querySelector('[data-minTemp1="min"]').textContent = `${Math.round(data.daily.temperature_2m_min[0])}`
 
     //
     for(let i=0;i <7;i++){

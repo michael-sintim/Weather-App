@@ -27,8 +27,9 @@ Your users should be able to:
 - Toggle between Imperial and Metric measurement units via the units dropdown
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
+- Add geolocation detection to automatically show weather for the user's current location on first visit
 
-Add geolocation detection to automatically show weather for the user's current location on first visit
+
 Implement a favorites/saved locations system where users can bookmark frequently checked locations
 Implement a "Compare Locations" feature to view weather side-by-side for multiple locations
 Include UV index, visibility, and air pressure data (available via Open-Meteo)
