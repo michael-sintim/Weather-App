@@ -143,6 +143,9 @@ catch (error){
     
 }   
 
+// default location 7
+
+
 
 
 //weather codes
@@ -208,8 +211,7 @@ async function FetchWeatherData(lat,long) {
         const img = document.querySelector('[data-bgimg="img"]')
         img.src = weatherCodes[WeatherCode]
     }
-    // HOURY
-    
+    // HOURr
 
     const dailyCards = document.querySelectorAll('[data-allCards="cards"] > div')
     
