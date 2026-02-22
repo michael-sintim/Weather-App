@@ -103,7 +103,7 @@
 
 
     const Dropdown2= document.querySelector('[data-hourly="menu"]')
-    const d2trigger = document.querySelector("[data-hourly='dropdown']")
+    const d2trigger = document.querySelector("[data-hourly='dropdown']") // div
 
     d2trigger.addEventListener('click', () => {
         if(Dropdown2.classList.contains('hidden')){
@@ -113,11 +113,27 @@
         }
     }
     )
+//click outside to close
+
+            function d2toggler(e){
+                if (!d2trigger.contains(e.target)){
+                    Dropdown2.classList.add('hidden')
+                }
+            }
+
+        document.addEventListener('click',d2toggler)
 
 
+// close with escape
 
+document.addEventListener('keydown',(e) => {
+    if(e.key==="Escape" && !Dropdown2.classList.contains('hidden')){
+        Dropdown2.classList.add('hidden')
+        
+    }
+}
+)
 
-    
 
     //geocoding api 
 
@@ -267,6 +283,7 @@
 
             document.querySelector(`[data-hrtime${i}="h0"]`).textContent = x
             document.querySelector(`[data-hr${i}="h0"]`).textContent = Math.round(hr_temp) + '°'
+
 
         }
         
