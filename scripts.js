@@ -260,6 +260,19 @@ document.addEventListener('keydown',(e) => {
 
         }
 
+
+        // get day 
+        const currentDay = new Date().getDay()
+        const currentHour = new Date().getHours()
+        for (let i=0;i<7;i++){
+
+            const WEATHERCODE =  data.daily.weather_code[i]
+            const high_temp =  data.hourly.temperature_2m[i]
+            const data_time  = data.hourly.time[i]  
+                
+        }
+        
+
         const HOURLY_CARDS = document.querySelectorAll('[data-ALLCARDS="CARDS"]')
         const currentHr = new Date().getHours() 
         for(let i=0;i<8;i++){
@@ -286,7 +299,7 @@ document.addEventListener('keydown',(e) => {
 
 
         }
-        
+
         return data;
         
     }
