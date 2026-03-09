@@ -269,6 +269,7 @@ document.addEventListener('keydown',(e) => {
             const WEATHERCODE =  data.daily.weather_code[i]
             const high_temp =  data.hourly.temperature_2m[i]
             const data_time  = data.hourly.time[i]  
+            
         }
         
 
