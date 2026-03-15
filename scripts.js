@@ -41,16 +41,6 @@ const formatTemp = (c) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
     const DropdownTrigger = document.querySelector("[data-dropdown='custom-dropdown']")
     const dropdown = document.querySelector("[data-ul='Dropdown-ul']")
     const list_items = document.querySelectorAll("[data-ul='Dropdown-ul'] li")
