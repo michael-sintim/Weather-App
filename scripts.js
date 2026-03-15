@@ -6,7 +6,7 @@
         // Function to toggle the dropdown
         // Toggle dropdown when clicking the trigger
 
-     // Close dropdown when clicking outside
+     // Close dropdown when clicking utside
         // Close dropdown when pressing Escape key
 
         // Handle item clicks
@@ -18,6 +18,39 @@
 
     document.addEventListener('DOMContentLoaded' ,()=> {
         
+
+// unit states 
+
+const units = {
+    temperature : 'C',
+    wind : 'kmh',
+    precipitation : 'mm',
+};
+
+let lastweatherdata =   null;
+let selecteddayindex = 0;
+
+const toFarenhenit = (c)  => Math.round(c*9/5+32)
+const toMPH = (k)  => Math.round(k*0.621371)
+const ToInches = (mm)  => Math.round(mm * 0.0393701).toFixed(2);
+
+
+const formatTemp = (c) => {
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
     const DropdownTrigger = document.querySelector("[data-dropdown='custom-dropdown']")
     const dropdown = document.querySelector("[data-ul='Dropdown-ul']")
     const list_items = document.querySelectorAll("[data-ul='Dropdown-ul'] li")
@@ -269,7 +302,7 @@ document.addEventListener('keydown',(e) => {
             const WEATHERCODE =  data.daily.weather_code[i]
             const high_temp =  data.hourly.temperature_2m[i]
             const data_time  = data.hourly.time[i]  
-            
+
         }
         
 
