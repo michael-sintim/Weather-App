@@ -394,7 +394,7 @@ document.addEventListener('keydown',(e) => {
             }
 
         },
-        async (error) => {
+        async (error) => {  
                 console.log('Geolocation denied:', error.message);
                 const location = await GeocodingData('London');
                 document.querySelector('[data-country="countryDate"]').textContent = `London, United Kingdom`;
